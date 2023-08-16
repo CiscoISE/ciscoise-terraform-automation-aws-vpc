@@ -20,7 +20,8 @@ resource "aws_subnet" "public_subnets" {
 
   cidr_block        = var.public_subnet_cidrs[count.index]
   vpc_id            = aws_vpc.cisco_ise.id
-  availability_zone = element(var.availability_zones, count.index)
+  #availability_zone = element(var.availability_zones, count.index)
+  availability_zone = var.availability_zones[count.index]
 
   tags = {
     Name = "PublicSubnet-${count.index}"
@@ -32,7 +33,8 @@ resource "aws_subnet" "private_subnets" {
 
   cidr_block        = var.private_subnet_cidrs[count.index]
   vpc_id            = aws_vpc.cisco_ise.id
-  availability_zone = element(var.availability_zones, count.index)
+  #availability_zone = element(var.availability_zones, count.index)
+  availability_zone = var.availability_zones[count.index]
 
   tags = {
     Name = "PrivateSubnet-${count.index}"
