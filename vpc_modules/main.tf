@@ -104,3 +104,24 @@ resource "aws_route_table_association" "private_subnet_association" {
   subnet_id      = aws_subnet.private_subnets[count.index].id
   route_table_id = aws_route_table.private_subnet_route_tables[count.index].id
 }
+
+resource "aws_vpc_endpoint" "s3_endpoint" {
+  vpc_id       = aws_vpc.cisco_ise.id
+  service_name = "com.amazonaws.${var.aws_region}.s3"
+}
+
+#need to check the association of s3vpc subnet association
+
+resource "aws_subnet_route_table_association" "s3_endpoint_association" {
+  count          = length(var.private_subnet_cidrs)
+  subnet_id      = aws_subnet.private_subnets[count.index].id
+  route_table_id = aws_route_table.private_route_tables[count.index].id
+}
+
+resource "aws_route" "s3_endpoint_route" {
+  count             = length(var.private_subnet_cidrs)
+  route_table_id    = aws_route_table.private_route_tables[count.index].id
+  destination_cidr_block = "0.0.0.0/0"
+  vpc_endpoint_id  = aws_vpc_endpoint.s3_endpoint.id
+}
+
