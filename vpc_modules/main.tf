@@ -43,7 +43,7 @@ resource "aws_subnet" "private_subnets" {
 
 resource "aws_nat_gateway" "cisco_ise_nat_gateways" {
   count = length(var.public_subnet_cidrs)
-  allocation_id = element(aws_eip.nat_ips.*.id, count.index)
+  allocation_id = element(aws_eip.cisco_ise_nat_ips.*.id, count.index)
   subnet_id     = element(aws_subnet.public_subnets.*.id, count.index)
 
   tags = {
@@ -58,7 +58,7 @@ resource "aws_eip" "cisco_ise_nat_ips" {
   vpc = true
 
   tags = {
-    Name = "NATIP-${count.index}"
+    Name = "NATEIP-${count.index}"
   }
 }
 
@@ -73,4 +73,34 @@ resource "aws_ec2_dhcp_options" "cisco_ise_dhcp_options" {
 resource "aws_vpc_dhcp_options_association" "cisco_ise_dhcp_association" {
   vpc_id             = aws_vpc.cisco_ise.id
   dhcp_options_id    = aws_ec2_dhcp_options.cisco_ise_dhcp_options.id
+}
+
+resource "aws_route_table" "public_subnet_route_table" {
+  vpc_id = aws_vpc.cisco_ise.id
+
+  tags = {
+    Name = "PublicSubnetsRouteTable"
+  }
+}
+
+resource "aws_route_table_association" "public_subnet_association" {
+  count          = length(var.public_subnet_cidrs)
+  subnet_id      = aws_subnet.public_subnets[count.index].id
+  route_table_id = aws_route_table.public_subnet_route_table.id
+}
+
+resource "aws_route_table" "private_subnet_route_tables" {
+  count = length(var.private_subnet_cidrs)
+
+  vpc_id = aws_vpc.cisco_ise.id
+
+  tags = {
+    Name = "PrivateSubnetRouteTable-${count.index}"
+  }
+}
+
+resource "aws_route_table_association" "private_subnet_association" {
+  count          = length(var.private_subnet_cidrs)
+  subnet_id      = aws_subnet.private_subnets[count.index].id
+  route_table_id = aws_route_table.private_subnet_route_tables[count.index].id
 }

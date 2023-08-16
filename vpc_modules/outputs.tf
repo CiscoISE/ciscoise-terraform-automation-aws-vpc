@@ -30,3 +30,12 @@ output "nat_gateway_eip_ids" {
   description = "The Elastic IPs associated with the NAT Gateways"
   value       = aws_eip.cisco_ise_nat_ips[*].id
 }
+output "public_route_table_id" {
+  description = "The ID of the public route table"
+  value       = aws_route_table.public_subnet_route_table.id
+}
+
+output "private_route_table_ids" {
+  description = "The IDs of the private route tables"
+  value       = aws_route_table.private_subnet_route_tables[*].id
+}
