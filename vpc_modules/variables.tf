@@ -44,3 +44,15 @@ variable "dhcp_domain_name" {
   type        = string
   default     = "ec2.internal"
 }
+
+variable "create_nat_gateways" {
+  description = "Create NAT Gateways for public subnets"
+  type        = bool
+  default     = true
+}
+
+variable "create_eips" {
+  description = "Create Elastic IPs for NAT Gateways"
+  type        = bool
+  default     = true
+}

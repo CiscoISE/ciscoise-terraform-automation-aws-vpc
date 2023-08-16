@@ -20,3 +20,13 @@ output "dhcp_options_id" {
   description = "The ID of the created DHCP options"
   value       = aws_ec2_dhcp_options.cisco_ise_dhcp_options.id
 }
+
+output "nat_gateway_ids" {
+  description = "The IDs of the created NAT Gateways"
+  value       = aws_nat_gateway.cisco_ise_nat_gateways[*].id
+}
+
+output "nat_gateway_eip_ids" {
+  description = "The Elastic IPs associated with the NAT Gateways"
+  value       = aws_eip.cisco_ise_nat_ips[*].id
+}

@@ -40,6 +40,28 @@ resource "aws_subnet" "private_subnets" {
     Name = "PrivateSubnet-${count.index}"
   }
 }
+
+resource "aws_nat_gateway" "cisco_ise_nat_gateways" {
+  count = length(var.public_subnet_cidrs)
+  allocation_id = element(aws_eip.nat_ips.*.id, count.index)
+  subnet_id     = element(aws_subnet.public_subnets.*.id, count.index)
+
+  tags = {
+    Name = "NATGateway-${count.index}"
+  }
+  depends_on = [aws_internet_gateway.cisco_ise_internet_gateway]
+}
+
+resource "aws_eip" "cisco_ise_nat_ips" {
+  count = length(var.public_subnet_cidrs)
+
+  vpc = true
+
+  tags = {
+    Name = "NATIP-${count.index}"
+  }
+}
+
 resource "aws_ec2_dhcp_options" "cisco_ise_dhcp_options" {
   domain_name_servers = ["AmazonProvidedDNS"]
   domain_name        = "ec2.internal"
