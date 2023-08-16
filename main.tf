@@ -1,6 +1,20 @@
-module "cisco_ise" {
-  source = "./vpc_modules"
+terraform {
+  required_version = ">= 0.15.1"
+  #backend "remote" {}
+}
 
+provider "aws" {
+  region = var.region
+}
+
+resource "random_string" "rand4" {
+  length  = 4
+  special = false
+  upper   = false
+}
+
+module "cisco_ise" {
+  source = "../vpc_modules"
 
   vpc_cidr              = var.vpc_cidr
   vpc_name              = var.vpc_name
