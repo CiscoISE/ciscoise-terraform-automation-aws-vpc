@@ -7,7 +7,7 @@ variable "vpc_cidr" {
 variable "vpc_name" {
   description = "Name tag for the VPC"
   type        = string
-  default     = "MyVPC"
+  default     = "cisco_ise"
 }
 
 variable "public_subnet_cidrs" {
@@ -33,4 +33,13 @@ variable "aws_region" {
   type        = string
   default     = "us-east-1"
 }
-
+variable "internet_gateway_name" {
+  description = "Name tag for the Internet Gateway"
+  type        = string
+  default     = "Cisco_ISE_IGW"
+}
+variable "dhcp_domain_name" {
+  description = "Domain name for DHCP options"
+  type        = string
+  default     = "ec2.internal"
+}
