@@ -5,6 +5,7 @@ terraform {
 
 provider "aws" {
   region = var.region
+  profile = "ciscoise" 
 }
 
 resource "random_string" "rand4" {
@@ -14,7 +15,7 @@ resource "random_string" "rand4" {
 }
 
 module "cisco_ise" {
-  source = "../vpc_modules"
+  source = "./modules/vpc_modules"
 
   vpc_cidr              = var.vpc_cidr
   vpc_name              = var.vpc_name
