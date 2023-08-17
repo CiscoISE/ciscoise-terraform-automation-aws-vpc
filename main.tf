@@ -1,11 +1,15 @@
-terraform {
-  required_version = ">= 0.15.1"
-  #backend "remote" {}
-}
+# terraform {
+#   required_version = ">= 0.15.1"
+#   #backend "remote" {}
+# }
 
+# provider "aws" {
+#   region = var.region
+#   profile = "ciscoise" 
+#   version = "~> 3.0"
+# }
 provider "aws" {
-  region = var.region
-  profile = "ciscoise" 
+  region = var.region # Update this to your desired region
 }
 
 resource "random_string" "rand4" {

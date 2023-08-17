@@ -1,6 +1,6 @@
 output "vpc_id" {
   description = "The ID of the created VPC"
-  value       = aws_vpc.my_vpc.id
+  value       = aws_vpc.cisco_ise.id
 }
 
 output "public_subnet_ids" {
@@ -18,7 +18,7 @@ output "internet_gateway_id" {
 }
 output "dhcp_options_id" {
   description = "The ID of the created DHCP options"
-  value       = aws_ec2_dhcp_options.cisco_ise_dhcp_options.id
+  value       = aws_vpc_dhcp_options.cisco_ise_dhcp_options.id
 }
 
 output "nat_gateway_ids" {
