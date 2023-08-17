@@ -26,7 +26,7 @@ output "nat_gateway_ids" {
   value       = aws_nat_gateway.cisco_ise_nat_gateways[*].id
 }
 
-output "nat_gateway_eip_ids" {
+output "nat_eip_ids" {
   description = "The Elastic IPs associated with the NAT Gateways"
   value       = aws_eip.cisco_ise_nat_ips[*].id
 }
