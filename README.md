@@ -479,9 +479,12 @@ Terraform will perform the following actions:
       + arn                 = (known after apply)
       + domain_name         = "drilldevops.in"
       + domain_name_servers = [
-          + "AmazonProvidedDNS",
+          + "169.254.169.253",
         ]
       + id                  = (known after apply)
+      + ntp_servers         = [
+          + "169.254.169.123",
+        ]
       + owner_id            = (known after apply)
       + tags                = {
           + "Name" = "cisco_ise_DHCPOptions"
