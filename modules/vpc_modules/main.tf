@@ -1,7 +1,7 @@
 resource "aws_vpc" "cisco_ise" {
   cidr_block = var.vpc_cidr
-  enable_dns_support   = true
-  enable_dns_hostnames = true
+  enable_dns_support   = var.enable_dns_support
+  enable_dns_hostnames = var.enable_dns_hostnames
 
   tags = {
     Name = var.vpc_name
@@ -62,9 +62,9 @@ resource "aws_eip" "cisco_ise_nat_ips" {
 }
 
 resource "aws_vpc_dhcp_options" "cisco_ise_dhcp_options" {
-  domain_name_servers = ["169.254.169.253"]
-  domain_name         = "drilldevops.in"
-  ntp_servers         = ["169.254.169.123"]
+  domain_name_servers = var.domain_name_servers
+  domain_name         = var.dhcp_options_domain_name
+  ntp_servers         = var.ntp_servers
   tags = {
     Name = "cisco_ise_DHCPOptions"
   }
