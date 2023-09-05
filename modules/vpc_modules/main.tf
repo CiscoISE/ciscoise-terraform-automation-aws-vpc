@@ -62,9 +62,8 @@ resource "aws_eip" "cisco_ise_nat_ips" {
 }
 
 resource "aws_vpc_dhcp_options" "cisco_ise_dhcp_options" {
-  domain_name_servers = var.domain_name_servers
-  domain_name         = var.dhcp_options_domain_name
-  ntp_servers         = var.ntp_servers
+  domain_name_servers = ["AmazonProvidedDNS"]
+  domain_name        = "${var.region}.compute.internal"
   tags = {
     Name = "cisco_ise_DHCPOptions"
   }
