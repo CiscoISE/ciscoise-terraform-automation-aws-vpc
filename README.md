@@ -171,6 +171,45 @@ Terraform will perform the following actions:
         }
     }
 
+  # module.cisco_ise.aws_route.public_subnet_route[0] will be created
+  + resource "aws_route" "public_subnet_route" {
+      + destination_cidr_block = "0.0.0.0/0"
+      + gateway_id             = (known after apply)
+      + id                     = (known after apply)
+      + instance_id            = (known after apply)
+      + instance_owner_id      = (known after apply)
+      + network_interface_id   = (known after apply)
+      + origin                 = (known after apply)
+      + route_table_id         = (known after apply)
+      + state                  = (known after apply)
+    }
+
+  # module.cisco_ise.aws_route.public_subnet_route[1] will be created
+  + resource "aws_route" "public_subnet_route" {
+      + destination_cidr_block = "0.0.0.0/0"
+      + gateway_id             = (known after apply)
+      + id                     = (known after apply)
+      + instance_id            = (known after apply)
+      + instance_owner_id      = (known after apply)
+      + network_interface_id   = (known after apply)
+      + origin                 = (known after apply)
+      + route_table_id         = (known after apply)
+      + state                  = (known after apply)
+    }
+
+  # module.cisco_ise.aws_route.public_subnet_route[2] will be created
+  + resource "aws_route" "public_subnet_route" {
+      + destination_cidr_block = "0.0.0.0/0"
+      + gateway_id             = (known after apply)
+      + id                     = (known after apply)
+      + instance_id            = (known after apply)
+      + instance_owner_id      = (known after apply)
+      + network_interface_id   = (known after apply)
+      + origin                 = (known after apply)
+      + route_table_id         = (known after apply)
+      + state                  = (known after apply)
+    }
+
   # module.cisco_ise.aws_route_table.private_subnet_route_tables[0] will be created
   + resource "aws_route_table" "private_subnet_route_tables" {
       + arn              = (known after apply)
@@ -529,7 +568,7 @@ Terraform will perform the following actions:
       + vpc_id                = (known after apply)
     }
 
-Plan: 31 to add, 0 to change, 0 to destroy.
+Plan: 34 to add, 0 to change, 0 to destroy.
 
 Changes to Outputs:
   + dhcp_options_id         = (known after apply)
@@ -564,6 +603,7 @@ Changes to Outputs:
   + s3_vpc_endpoint_id      = (known after apply)
   + vpc_id                  = (known after apply)
 
-──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
 
-Note: You didn't use the -out option to save this plan, so Terraform can't guarantee to take exactly these actions if you run "terraform apply" now.
+Note: You didn't use the -out option to save this plan, so Terraform can't guarantee to take exactly these actions if you run "terraform
+apply" now.
