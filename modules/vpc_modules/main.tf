@@ -89,6 +89,16 @@ resource "aws_route_table_association" "public_subnet_association" {
   route_table_id = aws_route_table.public_subnet_route_table.id
 }
 
+resource "aws_route" "public_subnet_route" {
+  count = length(var.public_subnet_cidrs)
+
+  route_table_id         = aws_route_table.public_subnet_route_table.id
+  destination_cidr_block = "0.0.0.0/0"  # This means all traffic not matching other routes goes to the IGW
+  gateway_id             = aws_internet_gateway.cisco_ise_internet_gateway.id
+
+  depends_on = [aws_internet_gateway.cisco_ise_internet_gateway]
+}
+
 resource "aws_route_table" "private_subnet_route_tables" {
   count = length(var.private_subnet_cidrs)
 
