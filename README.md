@@ -607,3 +607,175 @@ Changes to Outputs:
 
 Note: You didn't use the -out option to save this plan, so Terraform can't guarantee to take exactly these actions if you run "terraform
 apply" now.
+
+#updated terraform plan after making changes to dhcp options.
+KCHITIKI-M-G2NE:ise_launch_template-terraform-aws-vpc kchitiki$ terraform plan
+random_string.rand4: Refreshing state... [id=5iiz]
+module.cisco_ise.aws_vpc_dhcp_options.cisco_ise_dhcp_options: Refreshing state... [id=dopt-03d4a2b82cd8747bd]
+module.cisco_ise.aws_vpc.cisco_ise: Refreshing state... [id=vpc-0323b4b986ba40660]
+module.cisco_ise.aws_eip.cisco_ise_nat_ips[1]: Refreshing state... [id=eipalloc-0828929d4f9ebe67b]
+module.cisco_ise.aws_eip.cisco_ise_nat_ips[0]: Refreshing state... [id=eipalloc-02823b075d359f6d0]
+module.cisco_ise.aws_route_table.public_subnet_route_table: Refreshing state... [id=rtb-038467d7295e233c5]
+module.cisco_ise.aws_internet_gateway.cisco_ise_internet_gateway: Refreshing state... [id=igw-0cbf92070d4c0bd50]
+module.cisco_ise.aws_vpc_dhcp_options_association.cisco_ise_dhcp_association: Refreshing state... [id=dopt-03d4a2b82cd8747bd-vpc-0323b4b986ba40660]
+module.cisco_ise.aws_subnet.public_subnets[2]: Refreshing state... [id=subnet-0bd89f93d98bf2ef0]
+module.cisco_ise.aws_subnet.public_subnets[0]: Refreshing state... [id=subnet-01495323968802c9c]
+module.cisco_ise.aws_vpc_endpoint.s3_endpoint: Refreshing state... [id=vpce-0ec9c4027fd4a6900]
+module.cisco_ise.aws_route_table.private_subnet_route_tables[1]: Refreshing state... [id=rtb-0add6fb2b09fa1314]
+module.cisco_ise.aws_route_table.private_subnet_route_tables[2]: Refreshing state... [id=rtb-0648bdff6301fc6b5]
+module.cisco_ise.aws_subnet.public_subnets[1]: Refreshing state... [id=subnet-095e70abcee3b3932]
+module.cisco_ise.aws_route_table.private_subnet_route_tables[0]: Refreshing state... [id=rtb-07f3e98e63e9dfe7a]
+module.cisco_ise.aws_subnet.private_subnets[2]: Refreshing state... [id=subnet-07c4aff7eb4f325b5]
+module.cisco_ise.aws_subnet.private_subnets[0]: Refreshing state... [id=subnet-075ff6cb1ff0bc8b9]
+module.cisco_ise.aws_subnet.private_subnets[1]: Refreshing state... [id=subnet-00f9210b81428e275]
+module.cisco_ise.aws_route.public_subnet_route[2]: Refreshing state... [id=r-rtb-038467d7295e233c51080289494]
+module.cisco_ise.aws_route.public_subnet_route[1]: Refreshing state... [id=r-rtb-038467d7295e233c51080289494]
+module.cisco_ise.aws_route.public_subnet_route[0]: Refreshing state... [id=r-rtb-038467d7295e233c51080289494]
+module.cisco_ise.aws_route_table_association.public_subnet_association[1]: Refreshing state... [id=rtbassoc-04ed7e41e30a8f527]
+module.cisco_ise.aws_route_table_association.public_subnet_association[0]: Refreshing state... [id=rtbassoc-095627ea44456f3af]
+module.cisco_ise.aws_route_table_association.public_subnet_association[2]: Refreshing state... [id=rtbassoc-09b84ffd653a5d3d1]
+module.cisco_ise.aws_route_table_association.s3_endpoint_association[2]: Refreshing state... [id=rtbassoc-0db05feb4e8159c9e]
+module.cisco_ise.aws_route_table_association.s3_endpoint_association[1]: Refreshing state... [id=rtbassoc-0de4f269b5f6709f8]
+module.cisco_ise.aws_route_table_association.s3_endpoint_association[0]: Refreshing state... [id=rtbassoc-0133b15ffbd0882e4]
+module.cisco_ise.aws_route_table_association.private_subnet_association[0]: Refreshing state... [id=rtbassoc-0133b15ffbd0882e4]
+module.cisco_ise.aws_route_table_association.private_subnet_association[2]: Refreshing state... [id=rtbassoc-0db05feb4e8159c9e]
+module.cisco_ise.aws_route_table_association.private_subnet_association[1]: Refreshing state... [id=rtbassoc-0de4f269b5f6709f8]
+
+Terraform used the selected providers to generate the following execution plan. Resource actions are indicated with the following symbols:
+  + create
+  ~ update in-place
+-/+ destroy and then create replacement
+
+Terraform will perform the following actions:
+
+  # module.cisco_ise.aws_eip.cisco_ise_nat_ips[2] will be created
+  + resource "aws_eip" "cisco_ise_nat_ips" {
+      + allocation_id        = (known after apply)
+      + association_id       = (known after apply)
+      + carrier_ip           = (known after apply)
+      + customer_owned_ip    = (known after apply)
+      + domain               = (known after apply)
+      + id                   = (known after apply)
+      + instance             = (known after apply)
+      + network_border_group = (known after apply)
+      + network_interface    = (known after apply)
+      + private_dns          = (known after apply)
+      + private_ip           = (known after apply)
+      + public_dns           = (known after apply)
+      + public_ip            = (known after apply)
+      + public_ipv4_pool     = (known after apply)
+      + tags                 = {
+          + "Name" = "NATEIP-2"
+        }
+      + tags_all             = {
+          + "Name" = "NATEIP-2"
+        }
+      + vpc                  = (known after apply)
+    }
+
+  # module.cisco_ise.aws_nat_gateway.cisco_ise_nat_gateways[0] will be created
+  + resource "aws_nat_gateway" "cisco_ise_nat_gateways" {
+      + allocation_id                      = "eipalloc-02823b075d359f6d0"
+      + association_id                     = (known after apply)
+      + connectivity_type                  = "public"
+      + id                                 = (known after apply)
+      + network_interface_id               = (known after apply)
+      + private_ip                         = (known after apply)
+      + public_ip                          = (known after apply)
+      + secondary_private_ip_address_count = (known after apply)
+      + secondary_private_ip_addresses     = (known after apply)
+      + subnet_id                          = "subnet-01495323968802c9c"
+      + tags                               = {
+          + "Name" = "NATGateway-0"
+        }
+      + tags_all                           = {
+          + "Name" = "NATGateway-0"
+        }
+    }
+
+  # module.cisco_ise.aws_nat_gateway.cisco_ise_nat_gateways[1] will be created
+  + resource "aws_nat_gateway" "cisco_ise_nat_gateways" {
+      + allocation_id                      = "eipalloc-0828929d4f9ebe67b"
+      + association_id                     = (known after apply)
+      + connectivity_type                  = "public"
+      + id                                 = (known after apply)
+      + network_interface_id               = (known after apply)
+      + private_ip                         = (known after apply)
+      + public_ip                          = (known after apply)
+      + secondary_private_ip_address_count = (known after apply)
+      + secondary_private_ip_addresses     = (known after apply)
+      + subnet_id                          = "subnet-095e70abcee3b3932"
+      + tags                               = {
+          + "Name" = "NATGateway-1"
+        }
+      + tags_all                           = {
+          + "Name" = "NATGateway-1"
+        }
+    }
+
+  # module.cisco_ise.aws_nat_gateway.cisco_ise_nat_gateways[2] will be created
+  + resource "aws_nat_gateway" "cisco_ise_nat_gateways" {
+      + allocation_id                      = (known after apply)
+      + association_id                     = (known after apply)
+      + connectivity_type                  = "public"
+      + id                                 = (known after apply)
+      + network_interface_id               = (known after apply)
+      + private_ip                         = (known after apply)
+      + public_ip                          = (known after apply)
+      + secondary_private_ip_address_count = (known after apply)
+      + secondary_private_ip_addresses     = (known after apply)
+      + subnet_id                          = "subnet-0bd89f93d98bf2ef0"
+      + tags                               = {
+          + "Name" = "NATGateway-2"
+        }
+      + tags_all                           = {
+          + "Name" = "NATGateway-2"
+        }
+    }
+
+  # module.cisco_ise.aws_vpc_dhcp_options.cisco_ise_dhcp_options must be replaced
+-/+ resource "aws_vpc_dhcp_options" "cisco_ise_dhcp_options" {
+      ~ arn                  = "arn:aws:ec2:us-east-2:138813941721:dhcp-options/dopt-03d4a2b82cd8747bd" -> (known after apply)
+      ~ domain_name          = "drilldevops.in" -> "us-east-2.compute.internal" # forces replacement
+      ~ domain_name_servers  = [ # forces replacement
+          - "169.254.169.253",
+          + "AmazonProvidedDNS",
+        ]
+      ~ id                   = "dopt-03d4a2b82cd8747bd" -> (known after apply)
+      - netbios_name_servers = [] -> null
+      - ntp_servers          = [ # forces replacement
+          - "169.254.169.123",
+        ] -> null
+      ~ owner_id             = "138813941721" -> (known after apply)
+        tags                 = {
+            "Name" = "cisco_ise_DHCPOptions"
+        }
+        # (1 unchanged attribute hidden)
+    }
+
+  # module.cisco_ise.aws_vpc_dhcp_options_association.cisco_ise_dhcp_association will be updated in-place
+  ~ resource "aws_vpc_dhcp_options_association" "cisco_ise_dhcp_association" {
+      ~ dhcp_options_id = "dopt-03d4a2b82cd8747bd" -> (known after apply)
+        id              = "dopt-03d4a2b82cd8747bd-vpc-0323b4b986ba40660"
+        # (1 unchanged attribute hidden)
+    }
+
+Plan: 5 to add, 1 to change, 1 to destroy.
+
+Changes to Outputs:
+  ~ dhcp_options_id         = "dopt-03d4a2b82cd8747bd" -> (known after apply)
+  + nat_eip_ids             = [
+      + "eipalloc-02823b075d359f6d0",
+      + "eipalloc-0828929d4f9ebe67b",
+      + (known after apply),
+    ]
+  + nat_gateway_ids         = [
+      + (known after apply),
+      + (known after apply),
+      + (known after apply),
+    ]
+
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+
+Note: You didn't use the -out option to save this plan, so Terraform can't guarantee to take exactly these actions if you run "terraform
+apply" now.
