@@ -114,6 +114,15 @@ resource "aws_route_table_association" "private_subnet_association" {
   route_table_id = aws_route_table.private_subnet_route_tables[count.index].id
 }
 
+resource "aws_route" "private_subnet_route" {
+  count = length(var.private_subnet_cidrs)
+
+  route_table_id         = aws_route_table.private_subnet_route_tables[count.index].id
+  destination_cidr_block = "0.0.0.0/0"  # This means all traffic not matching other routes goes to the IGW
+  gateway_id             = aws_nat_gateway.cisco_ise_nat_gateways[count.index].id
+
+  depends_on = [aws_nat_gateway.cisco_ise_nat_gateways]
+}
 
 
 resource "aws_vpc_endpoint" "s3_endpoint" {
