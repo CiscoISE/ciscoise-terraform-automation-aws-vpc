@@ -26,7 +26,7 @@ resource "aws_subnet" "public_subnets" {
   availability_zone = var.availability_zones[count.index]
 
   tags = {
-    Name = "PublicSubnet-${count.index}"
+    Name = "PublicSubnet-${count.index+1}"
   }
 }
 
@@ -39,7 +39,7 @@ resource "aws_subnet" "private_subnets" {
   availability_zone = var.availability_zones[count.index]
 
   tags = {
-    Name = "PrivateSubnet-${count.index}"
+    Name = "PrivateSubnet-${count.index+1}"
   }
 }
 
@@ -49,7 +49,7 @@ resource "aws_nat_gateway" "cisco_ise_nat_gateways" {
   subnet_id     = element(aws_subnet.public_subnets.*.id, count.index)
 
   tags = {
-    Name = "NATGateway-${count.index}"
+    Name = "NATGateway-${count.index+1}"
   }
   depends_on = [aws_internet_gateway.cisco_ise_internet_gateway]
 }
@@ -57,7 +57,7 @@ resource "aws_nat_gateway" "cisco_ise_nat_gateways" {
 resource "aws_eip" "cisco_ise_nat_ips" {
   count = length(var.public_subnet_cidrs)
   tags = {
-    Name = "NATEIP-${count.index}"
+    Name = "NATEIP-${count.index+1}"
   }
 }
 
@@ -104,7 +104,7 @@ resource "aws_route_table" "private_subnet_route_tables" {
   vpc_id = aws_vpc.cisco_ise.id
 
   tags = {
-    Name = "PrivateSubnetRouteTable-${count.index}"
+    Name = "PrivateSubnetRouteTable-${count.index+1}"
   }
 }
 
