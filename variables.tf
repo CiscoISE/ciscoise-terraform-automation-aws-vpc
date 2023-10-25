@@ -22,32 +22,32 @@ variable "vpc_name" {
 variable "enable_dns_support" {
   description = "Whether to enable DNS support for the VPC"
   type        = bool
-  default     = true
+  default     = null
 }
 
 variable "enable_dns_hostnames" {
   description = "Whether to enable DNS hostnames for the VPC"
   type        = bool
-  default     = true
+  default     = null
 }
 
 
 variable "availability_zones" {
   description = "List of availability zones"
   type        = list(string)
-  default     = ""
+  default     = []
 }
 
 variable "public_subnet_cidrs" {
   description = "List of CIDR blocks for public subnets"
   type        = list(string)
-  default     = ""
+  default     = []
 }
 
 variable "private_subnet_cidrs" {
   description = "List of CIDR blocks for private subnets"
   type        = list(string)
-  default     = ""
+  default     = []
 }
 
 variable "internet_gateway_name" {
@@ -76,13 +76,13 @@ variable "create_eips" {
 variable "domain_name_servers" {
   description = "List of DNS servers to use"
   type        = list(string)
-  default     = ""
+  default     = []
 }
 
 variable "ntp_servers" {
   description = "List of NTP servers to use"
   type        = list(string)
-  default     = ""
+  default     = []
 }
 
 variable "dhcp_options_domain_name" {

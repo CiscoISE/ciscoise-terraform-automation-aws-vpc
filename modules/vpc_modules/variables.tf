@@ -34,19 +34,19 @@ variable "enable_dns_hostnames" {
 variable "availability_zones" {
   description = "List of availability zones"
   type        = list(string)
-  default     = ""
+  default     = []
 }
 
 variable "public_subnet_cidrs" {
   description = "List of CIDR blocks for public subnets"
   type        = list(string)
-  default     = ""
+  default     = []
 }
 
 variable "private_subnet_cidrs" {
   description = "List of CIDR blocks for private subnets"
   type        = list(string)
-  default     = ""
+  default     = []
 }
 
 variable "internet_gateway_name" {
@@ -75,13 +75,13 @@ variable "create_eips" {
 variable "domain_name_servers" {
   description = "List of DNS servers to use"
   type        = list(string)
-  default     = ""      # Default DNS server(s)
+  default     = []      # Default DNS server(s)
 }
 
 variable "ntp_servers" {
   description = "List of NTP servers to use"
   type        = list(string)
-  default     = ""  # Default NTP server(s)
+  default     = []  # Default NTP server(s)
 }
 
 variable "dhcp_options_domain_name" {
