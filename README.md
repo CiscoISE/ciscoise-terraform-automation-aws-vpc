@@ -38,7 +38,7 @@ Clone this git repo by using below this command
   git clone https://github3.cisco.com/techops-operation/ise_launch_template-terraform-aws-vpc.git
   ```
 
-Please refer Below "Inputs" section and update the variable.tf as per requirement. 
+Please refer Below "Inputs" section and update the terraform.tfvars as per requirement. 
 Once updated, run below commands to deploy the VPC stack
  ```
  terraform init --upgrade \

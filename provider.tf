@@ -1,3 +1,3 @@
 provider "aws" {
-  region = var.region  # Update with your desired region
+  region = var.aws_region  # Update with your desired region
 }
