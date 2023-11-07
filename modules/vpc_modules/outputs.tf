@@ -40,7 +40,7 @@ output "private_route_table_ids" {
   value       = aws_route_table.private_subnet_route_tables[*].id
 }
 
-output "s3_vpc_endpoint_id" {
-  description = "The ID of the created S3 VPC Endpoint"
-  value       = aws_vpc_endpoint.s3_endpoint.id
-}
+#output "s3_vpc_endpoint_id" {
+#  description = "The ID of the created S3 VPC Endpoint"
+#  value       = aws_vpc_endpoint.s3_endpoint.id
+#}
