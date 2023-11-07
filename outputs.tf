@@ -38,10 +38,6 @@ output "dhcp_options_id" {
   value       = module.cisco_ise.dhcp_options_id
 }
 
-output "s3_vpc_endpoint_id" {
-  description = "The ID of the S3 VPC Endpoint"
-  value       = module.cisco_ise.s3_vpc_endpoint_id
-}
 
 output "public_route_table_id" {
   description = "The ID of the public subnet route table"
@@ -52,6 +48,11 @@ output "private_route_table_ids" {
   description = "The IDs of the private subnet route tables"
   value       = module.cisco_ise.private_route_table_ids
 }
+
+#output "s3_vpc_endpoint_id" {
+#  description = "The ID of the S3 VPC Endpoint"
+#  value       = module.cisco_ise.s3_vpc_endpoint_id
+#} 
 
 # output "s3_endpoint_route_ids" {
 #   description = "The IDs of the S3 endpoint routes"
