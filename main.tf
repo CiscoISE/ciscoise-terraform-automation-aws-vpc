@@ -15,6 +15,6 @@ module "cisco_ise" {
   internet_gateway_name = var.internet_gateway_name
   dhcp_domain_name      = var.dhcp_domain_name
   aws_region            = var.aws_region
-
+  enable_dns_hostnames  = var.enable_dns_hostnames
 }
 
