@@ -7,8 +7,8 @@ availability_zones = [
   "us-east-2c"
 ]
 aws_region               = "us-east-2"        # AWS region in which resources will be provisioned.
-create_eips              = true               # Whether to create Elastic IPs (EIPs) for resources like NAT gateways.
-create_nat_gateways      = true               # Whether to create NAT gateways for private subnets to access the internet.
+create_eips              = true               # Whether to create Elastic IPs (EIPs) for resources like NAT gateways. Allowed values are 'true' and 'false'
+create_nat_gateways      = true               # Whether to create NAT gateways for private subnets to access the internet. Allowed values are 'true' and 'false'
 dhcp_domain_name         = "ec2.internal"     # The domain name to use for the DHCP option set (Amazon-provided DNS name).
 dhcp_options_domain_name = "drilldevops.in"   # The domain name to use for the DHCP option set (custom DNS name).
 
@@ -17,8 +17,8 @@ domain_name_servers = [
   "169.254.169.253"
 ]  
 
-enable_dns_hostnames  = true                  # Whether to enable DNS hostnames for instances in the VPC. 
-enable_dns_support    = true                  # Whether to enable DNS resolution for instances in the VPC.
+enable_dns_hostnames  = true                  # Whether to enable DNS hostnames for instances in the VPC. Allowed values are 'true' and 'false'
+enable_dns_support    = true                  # Whether to enable DNS resolution for instances in the VPC. Allowed values are 'true' and 'false'
 internet_gateway_name = "Cisco_ISE_IGW"       # The name of the internet gateway to be created.
 
 # List of NTP (Network Time Protocol) servers for instances in the VPC.
