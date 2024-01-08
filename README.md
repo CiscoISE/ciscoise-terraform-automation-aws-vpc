@@ -29,7 +29,8 @@ Before running terraform modules, follow below steps
 
 1. Setup SSH for git, follow this documentation - [How to setup SSH for git](https://www.warp.dev/terminus/git-clone-ssh) 
 
-2. Create a s3 bucket to store terraform backend state files. Refer this documentation - [How to create a s3 bucket](https://docs.aws.amazon.com/AmazonS3/latest/userguide/create-bucket-overview.html).
+2. It is mandatory to create a s3 bucket beforehand to store terraform backend state files which needs to be referenced in below [terraform init command](#terraform_init_command). Storing terraform state files in s3 provides enhanced collaboration, security and durability over keeping state files locally
+  - Existing s3 bucket can be used to store the backend files. If you want to create a new bucket, Refer this documentation - [How to create a s3 bucket](https://docs.aws.amazon.com/AmazonS3/latest/userguide/create-bucket-overview.html)
 
 ## Run terraform modules
 
@@ -40,9 +41,10 @@ Clone this git repo by using below this command
 
 Please refer Below "Inputs" section and update the terraform.tfvars as per requirement. 
 Once updated, run below commands to deploy the VPC stack
+<a name="terraform_init_command"></a>
  ```
  terraform init --upgrade \
-   -backend-config="bucket=<bucket_name>" \            # Specify the s3 bucket name created in prerequisites - step 3
+   -backend-config="bucket=<bucket_name>" \            # Specify the s3 bucket name created in prerequisites - step 2
    -backend-config="region=<bucket_region>" \          # Specify the s3 bucket region e.g., us-east-1 for N. Virginia
    -reconfigure
  terraform plan
@@ -57,6 +59,8 @@ This deployment takes approx 10 minutes to deploy.
 
 <!-- BEGIN_TF_DOCS -->
 ## Inputs
+
+:warning: **Please do not make any changes to the variables.tf file. It is recommended to only update the terraform input variables in terraform.tfvars file**
 
 | Name | Description | Type | Default |
 |------|-------------|------|---------|
