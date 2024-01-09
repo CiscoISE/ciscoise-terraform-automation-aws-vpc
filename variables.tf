@@ -88,5 +88,5 @@ variable "ntp_servers" {
 variable "dhcp_options_domain_name" {
   description = "Domain name for DHCP options"
   type        = string
-  default     = ""     # Default domain name
+  default     = "" # Default domain name
 }

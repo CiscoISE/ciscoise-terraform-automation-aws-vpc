@@ -75,17 +75,17 @@ variable "create_eips" {
 variable "domain_name_servers" {
   description = "List of DNS servers to use"
   type        = list(string)
-  default     = []      # Default DNS server(s)
+  default     = [] # Default DNS server(s)
 }
 
 variable "ntp_servers" {
   description = "List of NTP servers to use"
   type        = list(string)
-  default     = []  # Default NTP server(s)
+  default     = [] # Default NTP server(s)
 }
 
 variable "dhcp_options_domain_name" {
   description = "Domain name for DHCP options"
   type        = string
-  default     = ""     # Default domain name
+  default     = "" # Default domain name
 }
