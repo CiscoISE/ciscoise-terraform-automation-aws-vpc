@@ -102,3 +102,13 @@ This deployment takes approx 10 minutes to deploy.
 | <a name="output_s3_vpc_endpoint_id"></a> [s3\_vpc\_endpoint\_id](#output\_s3\_vpc\_endpoint\_id) | The ID of the S3 VPC Endpoint |
 | <a name="output_vpc_id"></a> [vpc\_id](#output\_vpc\_id) | The ID of the VPC |
 <!-- END_TF_DOCS -->
+
+## Destroy Infrastructure
+
+To destroy the ISE infrastructure resources created by this module, run below commands. 
+
+```
+terraform destroy -plan
+terraform destroy
+``` 
+To know more about the destroy command, please refer this [terraform destroy](https://developer.hashicorp.com/terraform/cli/commands/destroy) page
