@@ -18,6 +18,7 @@ body:
 
         If you are running into one of these scenarios, we recommend opening an issue in the [Terraform core repository](https://github.com/hashicorp/terraform/) instead.
   - type: checkboxes
+    attributes:
       label: Is there an existing issue for this?
       description: Please search to see if an issue already exists for the bug you encountered.
       options:
@@ -32,11 +33,11 @@ body:
     validations:
       required: true
   - type: input
-    id: AWS
+    id: azurerm
     attributes:
-      label: AWS Provider Version
-      description: Which AWS Provider version are you using?
-      placeholder: 5.0.0
+      label: AzureRM Provider Version
+      description: Which AzureRM Provider version are you using?
+      placeholder: 3.0.0
     validations:
       required: true
   - type: input
@@ -44,7 +45,7 @@ body:
     attributes:
       label: Affected Resource(s)/Data Source(s)
       description: Please list the affected resources and/or data sources.
-      placeholder: AWS_XXXXX
+      placeholder: azurerm_XXXXX
     validations:
       required: true
   - type: textarea
@@ -53,9 +54,6 @@ body:
       label: Terraform Configuration Files
       description: |
         Please provide a minimal Terraform configuration that can reproduce the issue.
-
-        For large Terraform configs, please use a service like Dropbox and share a link to the ZIP file.
-        For security, you can also encrypt the files using our GPG public key: https://keybase.io/hashicorp
       render: hcl
     validations:
       required: true
