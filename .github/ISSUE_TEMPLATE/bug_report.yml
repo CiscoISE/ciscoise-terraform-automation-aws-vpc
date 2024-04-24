@@ -33,11 +33,11 @@ body:
     validations:
       required: true
   - type: input
-    id: azurerm
+    id: AWS
     attributes:
-      label: AzureRM Provider Version
-      description: Which AzureRM Provider version are you using?
-      placeholder: 3.0.0
+      label: AWS Provider Version
+      description: Which AWS Provider version are you using?
+      placeholder: 5.0.0
     validations:
       required: true
   - type: input
