@@ -74,7 +74,7 @@ This deployment takes approx 10 minutes to deploy.
 | <a name="input_create_eips"></a> [create\_eips](#input\_create\_eips) | Create Elastic IPs for NAT Gateways | `bool` | `true` |
 | <a name="input_create_nat_gateways"></a> [create\_nat\_gateways](#input\_create\_nat\_gateways) | Create NAT Gateways for public subnets | `bool` | `true` |
 | <a name="input_dhcp_domain_name"></a> [dhcp\_domain\_name](#input\_dhcp\_domain\_name) | Domain name for DHCP options | `string` | `"ec2.internal"` |
-| <a name="input_dhcp_options_domain_name"></a> [dhcp\_options\_domain\_name](#input\_dhcp\_options\_domain\_name) | Domain name for DHCP options | `string` | `"drilldevops.in"` |
+| <a name="input_dhcp_options_domain_name"></a> [dhcp\_options\_domain\_name](#input\_dhcp\_options\_domain\_name) | Domain name for DHCP options | `string` | `"example.com"` |
 | <a name="input_domain_name_servers"></a> [domain\_name\_servers](#input\_domain\_name\_servers) | List of DNS servers to use | `list(string)` | <pre>[<br>  "169.254.169.253"<br>]</pre> |
 | <a name="input_enable_dns_hostnames"></a> [enable\_dns\_hostnames](#input\_enable\_dns\_hostnames) | Whether to enable DNS hostnames for the VPC | `bool` | `true` |
 | <a name="input_enable_dns_support"></a> [enable\_dns\_support](#input\_enable\_dns\_support) | Whether to enable DNS support for the VPC | `bool` | `true` |
